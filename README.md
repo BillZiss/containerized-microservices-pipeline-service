@@ -1,5 +1,7 @@
 # Containerized Microservices Pipeline
 
+[![Build Status](https://travis-ci.org/Microsoft/containerized-microservices-pipeline-service.svg?branch=master)](https://travis-ci.org/Microsoft/containerized-microservices-pipeline-service/)
+
 Containerized Microservices Pipeline service built on .NET Core
 
 ## Development Prerequisites
