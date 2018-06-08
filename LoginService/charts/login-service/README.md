@@ -1,4 +1,4 @@
-# Containerizer Microservice Pipeline Service
+# Containerized Microservice Pipeline Service
 
 Deploy this service to Kubernetes using [Helm](https://helm.sh/).
 
