@@ -1,10 +1,10 @@
-FROM microsoft/dotnet:2.0-sdk AS build
+FROM microsoft/dotnet:2.1-sdk AS build
 WORKDIR /app
 
 # copy csproj and restore as distinct layers
 COPY *.sln .
 COPY LoginService/*.csproj ./LoginService/
-COPY LoginServiceTests/*.csproj ./Tests/
+COPY LoginServiceTests/*.csproj ./LoginServiceTests/
 RUN dotnet restore
 
 # copy everything else and build app
@@ -14,7 +14,7 @@ RUN dotnet build
 
 # run tests
 FROM build AS test
-WORKDIR /app/Tests
+WORKDIR /app/LoginServiceTests
 RUN dotnet test
 
 # generate final artifacts
@@ -23,7 +23,7 @@ WORKDIR /app/LoginService
 RUN dotnet publish -c Release -o out /p:PublishWithAspNetCoreTargetManifest="false"
 
 # create final image
-FROM microsoft/dotnet:2.0-runtime AS runtime
+FROM microsoft/dotnet:2.1-aspnetcore-runtime AS runtime
 WORKDIR /app
 ENV ASPNETCORE_URLS=http://*:4201
 EXPOSE 4201
