@@ -117,9 +117,9 @@ namespace LoginService
                         ClockSkew = TimeSpan.FromMinutes(5)
                     };
                 });
-
-            services.AddApplicationInsightsTelemetry(Configuration);
-
+            
+            //this will enable pulling correlation headers based on W3C standard.
+            services.AddApplicationInsightsTelemetry(t => t.RequestCollectionOptions.EnableW3CDistributedTracing = true);
             services.AddMvc();
         }
 
